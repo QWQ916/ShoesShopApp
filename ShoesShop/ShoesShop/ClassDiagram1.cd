@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ShoesShop.Admin">
+    <Position X="5.5" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAQAAAAAAAAAAAAAAAEAAAAQAQAAgAAEAA=</HashCode>
+      <FileName>Admin.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShoesShop.Clients">
+    <Position X="11" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAQAAAAAAAAAAAAAAAEAAAAQAQAAgAAEAA=</HashCode>
+      <FileName>Clients.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.242" />
+  </Class>
+  <Class Name="ShoesShop.DataBase">
+    <Position X="17.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAJAAAAAAAAEAIQAAAAAAAAAAAAAAABAAABA=</HashCode>
+      <FileName>DataBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShoesShop.Guests">
+    <Position X="13.5" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAEAAACQAAQAgAAEAA=</HashCode>
+      <FileName>Guests.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ShoesShop.Manager">
+    <Position X="8.25" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAQAAAAAAAAAAAAAAAEAAAAQAQAAgAAEAA=</HashCode>
+      <FileName>Manager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.231" />
+  </Class>
+  <Class Name="ShoesShop.Program">
+    <Position X="15.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ShoesShop.Users">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Users.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
