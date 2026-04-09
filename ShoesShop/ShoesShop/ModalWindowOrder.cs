@@ -21,7 +21,7 @@ namespace ShoesShop
 
         private void but_ok_Click(object sender, EventArgs e)
         {
-            DataBase.EditDataFromDB($"DELETE dbo.Orders WHERE ID = {ID}"); MessageBox.Show("Вы успешно удалили товар!", "Успешное удаление!"); Close(); F.Close();
+            DataBase.EditDataFromDB($"DELETE dbo.Orders WHERE ID = {ID}"); MessageBox.Show("Вы успешно удалили заказ!", "Успешное удаление!"); Close(); F.Close();
         }
 
         private void but_cancel_Click(object sender, EventArgs e)
@@ -32,6 +32,11 @@ namespace ShoesShop
         private void ModalWindowOrder_FormClosed(object sender, FormClosedEventArgs e)
         {
             F.Enabled = true;
+        }
+
+        private void ModalWindowOrder_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

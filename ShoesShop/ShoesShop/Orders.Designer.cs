@@ -76,7 +76,7 @@
             this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg.Location = new System.Drawing.Point(156, 118);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(861, 719);
+            this.dg.Size = new System.Drawing.Size(861, 648);
             this.dg.TabIndex = 24;
             this.dg.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellDoubleClick);
             // 
@@ -86,7 +86,7 @@
             this.but_edit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.but_edit.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.but_edit.ForeColor = System.Drawing.Color.Black;
-            this.but_edit.Location = new System.Drawing.Point(156, 843);
+            this.but_edit.Location = new System.Drawing.Point(156, 772);
             this.but_edit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.but_edit.Name = "but_edit";
             this.but_edit.Size = new System.Drawing.Size(184, 46);
@@ -113,7 +113,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1083, 968);
+            this.ClientSize = new System.Drawing.Size(1051, 832);
             this.Controls.Add(this.but_edit);
             this.Controls.Add(this.dg);
             this.Controls.Add(this.textBox1);

@@ -32,14 +32,12 @@
             this.dialog_file = new System.Windows.Forms.OpenFileDialog();
             this.tb1 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tb_name = new System.Windows.Forms.TextBox();
             this.tb_desc = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.cb_category = new System.Windows.Forms.ComboBox();
             this.tb_manu = new System.Windows.Forms.TextBox();
             this.cb_manu = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.tb_prov = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.tb_unit = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -54,6 +52,8 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.tb_art = new System.Windows.Forms.TextBox();
             this.pb_img = new System.Windows.Forms.PictureBox();
+            this.cb_prov = new System.Windows.Forms.ComboBox();
+            this.cb_name = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_img)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,18 +90,6 @@
             this.textBox1.TabStop = false;
             this.textBox1.Text = "Описание";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tb_name
-            // 
-            this.tb_name.BackColor = System.Drawing.Color.White;
-            this.tb_name.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_name.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_name.Location = new System.Drawing.Point(398, 82);
-            this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(399, 32);
-            this.tb_name.TabIndex = 3;
-            this.tb_name.TabStop = false;
-            this.tb_name.TextChanged += new System.EventHandler(this.tb_name_TextChanged);
             // 
             // tb_desc
             // 
@@ -175,7 +163,7 @@
             this.textBox3.BackColor = System.Drawing.Color.Chartreuse;
             this.textBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox3.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(275, 131);
+            this.textBox3.Location = new System.Drawing.Point(275, 179);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(117, 32);
@@ -183,18 +171,6 @@
             this.textBox3.TabStop = false;
             this.textBox3.Text = "Поставщик";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tb_prov
-            // 
-            this.tb_prov.BackColor = System.Drawing.Color.White;
-            this.tb_prov.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_prov.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_prov.Location = new System.Drawing.Point(399, 132);
-            this.tb_prov.Name = "tb_prov";
-            this.tb_prov.Size = new System.Drawing.Size(399, 32);
-            this.tb_prov.TabIndex = 30;
-            this.tb_prov.TabStop = false;
-            this.tb_prov.TextChanged += new System.EventHandler(this.tb_prov_TextChanged);
             // 
             // textBox4
             // 
@@ -351,7 +327,7 @@
             this.textBox6.BackColor = System.Drawing.Color.Chartreuse;
             this.textBox6.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox6.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.Location = new System.Drawing.Point(275, 183);
+            this.textBox6.Location = new System.Drawing.Point(275, 129);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(117, 32);
@@ -365,7 +341,7 @@
             this.tb_art.BackColor = System.Drawing.Color.White;
             this.tb_art.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tb_art.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_art.Location = new System.Drawing.Point(399, 183);
+            this.tb_art.Location = new System.Drawing.Point(399, 129);
             this.tb_art.Name = "tb_art";
             this.tb_art.Size = new System.Drawing.Size(399, 32);
             this.tb_art.TabIndex = 43;
@@ -385,12 +361,40 @@
             this.pb_img.TabStop = false;
             this.pb_img.DoubleClick += new System.EventHandler(this.pb_img_DoubleClick);
             // 
+            // cb_prov
+            // 
+            this.cb_prov.BackColor = System.Drawing.SystemColors.Info;
+            this.cb_prov.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cb_prov.FormattingEnabled = true;
+            this.cb_prov.Location = new System.Drawing.Point(398, 182);
+            this.cb_prov.Name = "cb_prov";
+            this.cb_prov.Size = new System.Drawing.Size(420, 29);
+            this.cb_prov.TabIndex = 44;
+            this.cb_prov.TabStop = false;
+            this.cb_prov.Text = "<выбрать>";
+            this.cb_prov.SelectedIndexChanged += new System.EventHandler(this.cb_prov_SelectedIndexChanged);
+            // 
+            // cb_name
+            // 
+            this.cb_name.BackColor = System.Drawing.SystemColors.Info;
+            this.cb_name.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cb_name.FormattingEnabled = true;
+            this.cb_name.Location = new System.Drawing.Point(398, 82);
+            this.cb_name.Name = "cb_name";
+            this.cb_name.Size = new System.Drawing.Size(420, 29);
+            this.cb_name.TabIndex = 46;
+            this.cb_name.TabStop = false;
+            this.cb_name.Text = "<выбрать>";
+            this.cb_name.SelectedIndexChanged += new System.EventHandler(this.cb_name_SelectedIndexChanged);
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(810, 737);
+            this.ClientSize = new System.Drawing.Size(827, 737);
+            this.Controls.Add(this.cb_name);
+            this.Controls.Add(this.cb_prov);
             this.Controls.Add(this.tb_art);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.tb_mess);
@@ -404,14 +408,12 @@
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.tb_unit);
             this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.tb_prov);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.cb_manu);
             this.Controls.Add(this.tb_manu);
             this.Controls.Add(this.cb_category);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.tb_desc);
-            this.Controls.Add(this.tb_name);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tb1);
             this.Controls.Add(this.pb_img);
@@ -432,14 +434,12 @@
         private System.Windows.Forms.PictureBox pb_img;
         private System.Windows.Forms.TextBox tb1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox tb_name;
         private System.Windows.Forms.TextBox tb_desc;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ComboBox cb_category;
         private System.Windows.Forms.TextBox tb_manu;
         private System.Windows.Forms.ComboBox cb_manu;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox tb_prov;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox tb_unit;
         private System.Windows.Forms.TextBox textBox5;
@@ -453,5 +453,7 @@
         private System.Windows.Forms.TextBox tb_mess;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox tb_art;
+        private System.Windows.Forms.ComboBox cb_prov;
+        private System.Windows.Forms.ComboBox cb_name;
     }
 }

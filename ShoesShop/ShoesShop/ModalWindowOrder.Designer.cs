@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModalWindowOrder));
             this.but_cancel = new System.Windows.Forms.Button();
             this.but_ok = new System.Windows.Forms.Button();
-            this.tb_info = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_info = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // but_cancel
@@ -63,22 +63,6 @@
             this.but_ok.UseVisualStyleBackColor = false;
             this.but_ok.Click += new System.EventHandler(this.but_ok_Click);
             // 
-            // tb_info
-            // 
-            this.tb_info.BackColor = System.Drawing.Color.White;
-            this.tb_info.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_info.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.tb_info.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_info.Location = new System.Drawing.Point(11, 67);
-            this.tb_info.Multiline = true;
-            this.tb_info.Name = "tb_info";
-            this.tb_info.ReadOnly = true;
-            this.tb_info.Size = new System.Drawing.Size(440, 143);
-            this.tb_info.TabIndex = 5;
-            this.tb_info.TabStop = false;
-            this.tb_info.Text = "Вы пытаетесь выполнить неотвратимое действие: удалить товар";
-            this.tb_info.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.White;
@@ -95,6 +79,22 @@
             this.textBox1.Text = "Предупреждение!";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // tb_info
+            // 
+            this.tb_info.BackColor = System.Drawing.Color.White;
+            this.tb_info.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_info.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.tb_info.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tb_info.Location = new System.Drawing.Point(11, 67);
+            this.tb_info.Multiline = true;
+            this.tb_info.Name = "tb_info";
+            this.tb_info.ReadOnly = true;
+            this.tb_info.Size = new System.Drawing.Size(440, 143);
+            this.tb_info.TabIndex = 5;
+            this.tb_info.TabStop = false;
+            this.tb_info.Text = "Вы пытаетесь выполнить неотвратимое действие: удалить заказ";
+            this.tb_info.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // ModalWindowOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,6 +110,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ООО \"Обувь\" - Предупреждение";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ModalWindowOrder_FormClosed);
+            this.Load += new System.EventHandler(this.ModalWindowOrder_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,7 +120,7 @@
 
         private System.Windows.Forms.Button but_cancel;
         private System.Windows.Forms.Button but_ok;
-        private System.Windows.Forms.TextBox tb_info;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_info;
     }
 }

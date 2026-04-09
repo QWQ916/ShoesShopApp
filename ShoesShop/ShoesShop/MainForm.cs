@@ -107,14 +107,14 @@ namespace ShoesShop
             dg.ClearSelection();
             dg.Columns[1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
-            FillTable(DataBase.GetDataFromDB("SELECT * FROM dbo.Products"));
+            FillTable(DataBase.GetDataFromDB("SELECT * FROM dbo.Products p INNER JOIN dbo.Manufacturers m ON p.ManufacturerID = m.ID INNER JOIN dbo.Providers pr ON p.ProviderID = pr.ID INNER JOIN dbo.Categories c ON p.CategoryID = c.ID INNER JOIN dbo.Names n ON p.NameID = n.ID"));
 
-            DataTable p = DataBase.GetDataFromDB("SELECT DISTINCT Provider FROM dbo.Products");
+            DataTable p = DataBase.GetDataFromDB("SELECT ProviderName FROM dbo.Providers");
             cb_prov.DropDownStyle = ComboBoxStyle.DropDownList;
             foreach (DataRow row in p.Rows)
             {
-                provs.Add(row["Provider"].ToString());
-                cb_prov.Items.Add(row["Provider"].ToString());
+                provs.Add(row["ProviderName"].ToString());
+                cb_prov.Items.Add(row["ProviderName"].ToString());
             }
         }
 
@@ -122,11 +122,11 @@ namespace ShoesShop
         public void Mix()
         {
             dg.Rows.Clear();
-            string q = "SELECT * FROM dbo.Products";
+            string q = "SELECT * FROM dbo.Products p INNER JOIN dbo.Manufacturers m ON p.ManufacturerID = m.ID INNER JOIN dbo.Providers pr ON p.ProviderID = pr.ID INNER JOIN dbo.Categories c ON p.CategoryID = c.ID INNER JOIN dbo.Names n ON p.NameID = n.ID";
             string s; string f; string ss;
             if (Search != "")
             {
-                s = $" WHERE (Article LIKE N'%{Search}%' OR Name LIKE N'%{Search}%' OR Unit LIKE N'%{Search}%' OR Provider LIKE N'%{Search}%' OR Manufacturer LIKE N'%{Search}%' OR Category LIKE N'%{Search}%' OR Description LIKE N'%{Search}%')";
+                s = $" WHERE (Article LIKE N'%{Search}%' OR ProductName LIKE N'%{Search}%' OR Unit LIKE N'%{Search}%' OR ProviderName LIKE N'%{Search}%' OR ManufacturerName LIKE N'%{Search}%' OR CategoryName LIKE N'%{Search}%' OR Description LIKE N'%{Search}%')";
             }
             else
             {
@@ -134,7 +134,7 @@ namespace ShoesShop
             }
             if (cb_prov.SelectedIndex != 0)
             {
-                f = $" AND Provider = N'{provs[cb_prov.SelectedIndex - 1]}'";
+                f = $" AND pr.ProviderName = N'{provs[cb_prov.SelectedIndex - 1]}'";
             }
             else
             {
@@ -165,8 +165,8 @@ namespace ShoesShop
             foreach (DataRow r in dt.Rows)
             {
                 current = dt;
-                path = r["Picture"].ToString(); name = r["Name"].ToString(); category = r["Category"].ToString(); desc = r["Description"].ToString(); unit = r["Unit"].ToString();
-                manuf = r["Manufacturer"].ToString(); prov = r["Provider"].ToString(); price = Convert.ToInt32(r["Price"].ToString()); count = Convert.ToInt32(r["Count"].ToString()); discount = Convert.ToInt32(r["Discount"].ToString());
+                path = r["Picture"].ToString(); name = r["ProductName"].ToString(); category = r["CategoryName"].ToString(); desc = r["Description"].ToString(); unit = r["Unit"].ToString();
+                manuf = r["ManufacturerName"].ToString(); prov = r["ProviderName"].ToString(); price = Convert.ToInt32(r["Price"].ToString()); count = Convert.ToInt32(r["Count"].ToString()); discount = Convert.ToInt32(r["Discount"].ToString());
                 if (Convert.ToInt32(r["VFlag"].ToString()) == 1)
                 {
                     dg.Rows.Add();

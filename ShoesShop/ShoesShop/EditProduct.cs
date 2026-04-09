@@ -27,9 +27,9 @@ namespace ShoesShop
 
         int cb_man_iselected = -1;
         int cb_cat_iselected = -1;
+        int cb_pro_iselected = -1;
+        int cb_nam_iselected = -1;
 
-        string name; 
-        string prov; 
         string unit; 
         string desc; 
         string art;
@@ -38,17 +38,11 @@ namespace ShoesShop
         int discount; 
         int count;
 
-        List<string> categories; List<string> manus;
+        List<string> categories; List<string> manus; List<string> provs; List<string> names;
 
         private void EditProduct_Load(object sender, EventArgs e)
         {
             int ID = Convert.ToInt32(tb_id.Text);
-
-            name = DataBase.GetDataFromDB($"SELECT Name FROM dbo.Products WHERE ID = {ID}").Rows[0][0].ToString();
-            tb_name.Text = name;
-
-            prov = DataBase.GetDataFromDB($"SELECT Provider FROM dbo.Products WHERE ID = {ID}").Rows[0][0].ToString();
-            tb_prov.Text = prov;
 
             unit = DataBase.GetDataFromDB($"SELECT Unit FROM dbo.Products WHERE ID = {ID}").Rows[0][0].ToString();
             tb_unit.Text = unit;
@@ -72,38 +66,60 @@ namespace ShoesShop
             if (path == "") { path = "picture.png"; }
             pb_img.Image = CloneImg(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img", path));
 
-            string cat = DataBase.GetDataFromDB($"SELECT Category FROM dbo.Products WHERE ID = {ID}").Rows[0][0].ToString();
-            string man = DataBase.GetDataFromDB($"SELECT Manufacturer FROM dbo.Products WHERE ID = {ID}").Rows[0][0].ToString();
+            string cat = DataBase.GetDataFromDB($"SELECT CategoryName FROM dbo.Products p INNER JOIN dbo.Categories c ON p.CategoryID = c.ID WHERE p.ID = {ID}").Rows[0][0].ToString();
+            string man = DataBase.GetDataFromDB($"SELECT ManufacturerName FROM dbo.Products p INNER JOIN dbo.Manufacturers m ON p.ManufacturerID = m.ID WHERE p.ID = {ID}").Rows[0][0].ToString();
+            string nam = DataBase.GetDataFromDB($"SELECT ProductName FROM dbo.Products p INNER JOIN dbo.Names n ON p.NameID = n.ID WHERE p.ID = {ID}").Rows[0][0].ToString();
+            string pro = DataBase.GetDataFromDB($"SELECT ProviderName FROM dbo.Products p INNER JOIN dbo.Providers pr ON p.ProviderID = pr.ID WHERE p.ID = {ID}").Rows[0][0].ToString();
 
             newImageName = path;
             if (newImageName == "") { newImageName = "picture.png"; }
 
-            DataTable tc = DataBase.GetDataFromDB("SELECT DISTINCT Category FROM dbo.Products");
+            DataTable tc = DataBase.GetDataFromDB("SELECT CategoryName FROM dbo.Categories");
             categories = new List<string>();
             cb_category.DropDownStyle = ComboBoxStyle.DropDownList;
             foreach (DataRow dr in tc.Rows)
             {
-                categories.Add(dr["Category"].ToString());
-                cb_category.Items.Add(dr["Category"].ToString());
+                categories.Add(dr["CategoryName"].ToString());
+                cb_category.Items.Add(dr["CategoryName"].ToString());
             }
 
-            DataTable tm = DataBase.GetDataFromDB("SELECT DISTINCT Manufacturer FROM dbo.Products");
+            DataTable tm = DataBase.GetDataFromDB("SELECT ManufacturerName FROM dbo.Manufacturers");
             manus = new List<string>();
             cb_manu.DropDownStyle = ComboBoxStyle.DropDownList;
             foreach (DataRow dr in tm.Rows)
             {
-                manus.Add(dr["Manufacturer"].ToString());
-                cb_manu.Items.Add(dr["Manufacturer"].ToString());
+                manus.Add(dr["ManufacturerName"].ToString());
+                cb_manu.Items.Add(dr["ManufacturerName"].ToString());
+            }
+
+            DataTable tn = DataBase.GetDataFromDB("SELECT ProductName FROM dbo.Names");
+            names = new List<string>();
+            cb_name.DropDownStyle = ComboBoxStyle.DropDownList;
+            foreach (DataRow dr in tn.Rows)
+            {
+                names.Add(dr["ProductName"].ToString());
+                cb_name.Items.Add(dr["ProductName"].ToString());
+            }
+
+            DataTable tpr = DataBase.GetDataFromDB("SELECT ProviderName FROM dbo.Providers");
+            provs = new List<string>();
+            cb_prov.DropDownStyle = ComboBoxStyle.DropDownList;
+            foreach (DataRow dr in tpr.Rows)
+            {
+                provs.Add(dr["ProviderName"].ToString());
+                cb_prov.Items.Add(dr["ProviderName"].ToString());
             }
 
             cb_category.SelectedIndex = categories.IndexOf(cat);
             cb_manu.SelectedIndex = manus.IndexOf(man);
+            cb_name.SelectedIndex = names.IndexOf(nam);
+            cb_prov.SelectedIndex = provs.IndexOf(pro);
 
             CheckAll();
 
-            tb_name.ForeColor = Color.Blue;
+            cb_name.ForeColor = Color.Blue;
             tb_art.ForeColor = Color.Blue;
-            tb_prov.ForeColor = Color.Blue;
+            cb_prov.ForeColor = Color.Blue;
             tb_price.ForeColor = Color.Blue;
             tb_count.ForeColor = Color.Blue;
             tb_unit.ForeColor = Color.Blue;
@@ -201,7 +217,7 @@ namespace ShoesShop
 
         public void CheckAll()
         {
-            if (name == null || prov == null || desc == null || unit == null || price == -1 || discount == -1 || count == -1 || cb_cat_iselected == -1 || cb_man_iselected == -1 || art == null)
+            if (cb_nam_iselected == -1 || cb_pro_iselected == -1 || desc == null || unit == null || price == -1 || discount == -1 || count == -1 || cb_cat_iselected == -1 || cb_man_iselected == -1 || art == null)
             {
                 But(false);
             }
@@ -305,16 +321,6 @@ namespace ShoesShop
 
 
 
-        private void tb_name_TextChanged(object sender, EventArgs e)
-        {
-            CheckStr(tb_name, tb_mess, out name); CheckAll();
-        }
-
-        private void tb_prov_TextChanged(object sender, EventArgs e)
-        {
-            CheckStr(tb_prov, tb_mess, out prov); CheckAll();
-        }
-
         private void tb_price_TextChanged(object sender, EventArgs e)
         {
             CheckD(tb_price, tb_mess, out price); CheckAll();
@@ -357,6 +363,18 @@ namespace ShoesShop
             CheckAll();
         }
 
+        private void cb_name_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cb_nam_iselected = cb_name.SelectedIndex; cb_name.BackColor = SystemColors.Info;
+            CheckAll();
+        }
+
+        private void cb_prov_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cb_pro_iselected = cb_prov.SelectedIndex; cb_prov.BackColor = SystemColors.Info;
+            CheckAll();
+        }
+
         private void tb_art_TextChanged(object sender, EventArgs e)
         {
             CheckStr(tb_art, tb_mess, out art); CheckAll();
@@ -369,8 +387,8 @@ namespace ShoesShop
             this.Enabled = false;
             int ID = Convert.ToInt32(tb_id.Text);
             oldImageName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img", DataBase.GetDataFromDB($"SELECT Picture FROM dbo.Products WHERE ID = {ID}").Rows[0][0].ToString());
-            DataBase.EditDataFromDB($"UPDATE dbo.Products SET Article = '{art}', Name = N'{name}', Unit = N'{unit}', Price = {Convert.ToInt32(price)}, Provider = N'{prov}', Manufacturer = N'{manus[cb_man_iselected]}', Category = N'{categories[cb_cat_iselected]}', Discount = {discount}, Count = {count}, Description = N'{desc}', Picture = '{newImageName}' WHERE ID = {ID}");
-            MessageBox.Show($"Вы отредактировали успешно товар '{name}'", "Успешное изменение");
+            DataBase.EditDataFromDB($"UPDATE dbo.Products SET Article = '{art}', NameID = {cb_nam_iselected+1}, Unit = N'{unit}', Price = {Convert.ToInt32(price)}, ProviderID = {cb_pro_iselected+1}, ManufacturerID = {cb_man_iselected+1}, CategoryID = {cb_cat_iselected+1}, Discount = {discount}, Count = {count}, Description = N'{desc}', Picture = N'{newImageName}' WHERE ID = {ID}");
+            MessageBox.Show($"Вы отредактировали успешно товар '{names[cb_nam_iselected]}'", "Успешное изменение");
             Close();
         }
 
@@ -381,5 +399,7 @@ namespace ShoesShop
             ModalWindow M = new ModalWindow(this, ID); this.Enabled = false;
             M.Show();
         }
+
+        
     }
 }

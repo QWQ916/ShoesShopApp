@@ -54,7 +54,7 @@
             this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBox1.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox1.Location = new System.Drawing.Point(590, 20);
+            this.textBox1.Location = new System.Drawing.Point(552, 12);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -71,7 +71,7 @@
             this.tb_role.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_role.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tb_role.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_role.Location = new System.Drawing.Point(1232, 12);
+            this.tb_role.Location = new System.Drawing.Point(943, 12);
             this.tb_role.Name = "tb_role";
             this.tb_role.ReadOnly = true;
             this.tb_role.Size = new System.Drawing.Size(372, 25);
@@ -86,7 +86,7 @@
             this.tb_name.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tb_name.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tb_name.ForeColor = System.Drawing.Color.Navy;
-            this.tb_name.Location = new System.Drawing.Point(1232, 35);
+            this.tb_name.Location = new System.Drawing.Point(943, 37);
             this.tb_name.Name = "tb_name";
             this.tb_name.ReadOnly = true;
             this.tb_name.Size = new System.Drawing.Size(372, 25);
@@ -114,7 +114,7 @@
             this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg.Location = new System.Drawing.Point(157, 156);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(1112, 719);
+            this.dg.Size = new System.Drawing.Size(1118, 622);
             this.dg.TabIndex = 21;
             this.dg.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellDoubleClick);
             // 
@@ -124,7 +124,7 @@
             this.but_edit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.but_edit.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.but_edit.ForeColor = System.Drawing.Color.Black;
-            this.but_edit.Location = new System.Drawing.Point(157, 881);
+            this.but_edit.Location = new System.Drawing.Point(157, 784);
             this.but_edit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.but_edit.Name = "but_edit";
             this.but_edit.Size = new System.Drawing.Size(184, 46);
@@ -137,7 +137,7 @@
             // tb_search
             // 
             this.tb_search.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_search.Location = new System.Drawing.Point(590, 83);
+            this.tb_search.Location = new System.Drawing.Point(552, 68);
             this.tb_search.Name = "tb_search";
             this.tb_search.Size = new System.Drawing.Size(293, 29);
             this.tb_search.TabIndex = 24;
@@ -153,7 +153,7 @@
             this.cb_prov.FormattingEnabled = true;
             this.cb_prov.Items.AddRange(new object[] {
             "Все поставщики..."});
-            this.cb_prov.Location = new System.Drawing.Point(1275, 156);
+            this.cb_prov.Location = new System.Drawing.Point(1033, 120);
             this.cb_prov.Name = "cb_prov";
             this.cb_prov.Size = new System.Drawing.Size(242, 30);
             this.cb_prov.TabIndex = 25;
@@ -183,7 +183,7 @@
             this.but_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but_reset.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.but_reset.ForeColor = System.Drawing.Color.White;
-            this.but_reset.Location = new System.Drawing.Point(653, 118);
+            this.but_reset.Location = new System.Drawing.Point(619, 103);
             this.but_reset.Name = "but_reset";
             this.but_reset.Size = new System.Drawing.Size(161, 32);
             this.but_reset.TabIndex = 28;
@@ -197,7 +197,7 @@
             this.but_orders.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.but_orders.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.but_orders.ForeColor = System.Drawing.Color.White;
-            this.but_orders.Location = new System.Drawing.Point(1387, 919);
+            this.but_orders.Location = new System.Drawing.Point(1059, 784);
             this.but_orders.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.but_orders.Name = "but_orders";
             this.but_orders.Size = new System.Drawing.Size(216, 46);
@@ -237,7 +237,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1616, 977);
+            this.ClientSize = new System.Drawing.Size(1293, 845);
             this.Controls.Add(this.but_orders);
             this.Controls.Add(this.but_reset);
             this.Controls.Add(this.tb_sort);

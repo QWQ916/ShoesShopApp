@@ -28,31 +28,52 @@ namespace ShoesShop
 
         int cb_man_iselected = -1;
         int cb_cat_iselected = -1;
+        int cb_pro_iselected = -1;
+        int cb_nam_iselected = -1;
 
-        string name; string prov; string unit; string desc; string art;
+        string unit; string desc; string art;
 
         double price; int discount; int count;
 
-        List<string> categories; List<string> manus;
+        List<string> categories; List<string> manus; List<string> provs; List<string> names;
 
         private void AddProduct_Load(object sender, EventArgs e)
         {
-            DataTable tc = DataBase.GetDataFromDB("SELECT DISTINCT Category FROM dbo.Products");
+            DataTable tc = DataBase.GetDataFromDB("SELECT CategoryName FROM dbo.Categories");
             categories = new List<string>();
             cb_category.DropDownStyle = ComboBoxStyle.DropDownList;
             foreach (DataRow dr in tc.Rows)
             {
-                categories.Add(dr["Category"].ToString());
-                cb_category.Items.Add(dr["Category"].ToString());
+                categories.Add(dr["CategoryName"].ToString());
+                cb_category.Items.Add(dr["CategoryName"].ToString());
             }
 
-            DataTable tm = DataBase.GetDataFromDB("SELECT DISTINCT Manufacturer FROM dbo.Products");
+            DataTable tm = DataBase.GetDataFromDB("SELECT ManufacturerName FROM dbo.Manufacturers");
             manus = new List<string>();
             cb_manu.DropDownStyle = ComboBoxStyle.DropDownList;
             foreach (DataRow dr in tm.Rows)
             {
-                manus.Add(dr["Manufacturer"].ToString());
-                cb_manu.Items.Add(dr["Manufacturer"].ToString());
+                manus.Add(dr["ManufacturerName"].ToString());
+                cb_manu.Items.Add(dr["ManufacturerName"].ToString());
+            }
+
+            DataTable tn = DataBase.GetDataFromDB("SELECT ProductName FROM dbo.Names");
+            names = new List<string>();
+            cb_name.DropDownStyle = ComboBoxStyle.DropDownList;
+            foreach (DataRow dr in tn.Rows)
+            {
+                names.Add(dr["ProductName"].ToString());
+                cb_name.Items.Add(dr["ProductName"].ToString());
+            }
+
+
+            DataTable tpr = DataBase.GetDataFromDB("SELECT ProviderName FROM dbo.Providers");
+            provs = new List<string>();
+            cb_prov.DropDownStyle = ComboBoxStyle.DropDownList;
+            foreach (DataRow dr in tpr.Rows)
+            {
+                provs.Add(dr["ProviderName"].ToString());
+                cb_prov.Items.Add(dr["ProviderName"].ToString());
             }
             CheckAll();
         }
@@ -145,7 +166,7 @@ namespace ShoesShop
 
         public void CheckAll()
         {
-            if (name == null || prov == null || desc == null || unit == null || price == -1 || discount == -1 || count == -1 || cb_cat_iselected == -1 || cb_man_iselected == -1 || art == null)
+            if (cb_nam_iselected == -1 || cb_pro_iselected == -1 || desc == null || unit == null || price == -1 || discount == -1 || count == -1 || cb_cat_iselected == -1 || cb_man_iselected == -1 || art == null)
             {
                 But(false);
             }
@@ -247,16 +268,6 @@ namespace ShoesShop
 
 
 
-        private void tb_name_TextChanged(object sender, EventArgs e)
-        {
-            CheckStr(tb_name, tb_mess, out name); CheckAll();
-        }
-
-        private void tb_prov_TextChanged(object sender, EventArgs e)
-        {
-            CheckStr(tb_prov, tb_mess, out prov); CheckAll();
-        }
-
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
             CheckD(tb_price, tb_mess, out price); CheckAll();
@@ -299,6 +310,18 @@ namespace ShoesShop
             CheckAll();
         }
 
+        private void cb_name_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cb_nam_iselected = cb_name.SelectedIndex;
+            CheckAll();
+        }
+
+        private void cb_prov_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cb_pro_iselected = cb_prov.SelectedIndex;
+            CheckAll();
+        }
+
         private void tb_art_TextChanged(object sender, EventArgs e)
         {
             CheckStr(tb_art, tb_mess, out art); CheckAll();
@@ -310,10 +333,10 @@ namespace ShoesShop
         {
             k++; this.Enabled = false; 
             int id = Convert.ToInt32(DataBase.GetDataFromDB("SELECT TOP 1 ID FROM dbo.Products ORDER BY ID DESC").Rows[0].ItemArray[0]) + 1;
-            DataBase.EditDataFromDB($"INSERT INTO dbo.Products VALUES ({id}, '{art}', N'{name}', N'{unit}', {Convert.ToInt32(price)}, N'{prov}', N'{manus[cb_man_iselected]}', N'{categories[cb_cat_iselected]}', {discount}, {count}, N'{desc}', '{newImageName}', 1)");
-            MessageBox.Show($"Вы добавили успешно товар '{name}'", "Успешное добавление"); Close();
+            DataBase.EditDataFromDB($"INSERT INTO dbo.Products VALUES ({id}, '{art}', {cb_nam_iselected+1}, N'{unit}', {Convert.ToInt32(price)}, {cb_pro_iselected+1}, {cb_man_iselected+1}, {cb_cat_iselected+1}, {discount}, {count}, N'{desc}', N'{newImageName}', 1)");
+            MessageBox.Show($"Вы добавили успешно товар '{names[cb_nam_iselected]}'", "Успешное добавление"); Close();
         }
 
-       
+        
     }
 }
